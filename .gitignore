@@ -22,6 +22,7 @@ DerivedData
 *.xcuserstate
 ios/.xcode.env.local
 yarn.lock
+ios/GoogleService-Info.plist
 
 # Android/IntelliJ
 #
