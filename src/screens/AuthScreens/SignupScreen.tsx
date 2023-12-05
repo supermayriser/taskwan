@@ -150,8 +150,6 @@ const SignupScreen: React.FC<IProps> = ({ navigation }) => {
 
           <View style={ styles.socialButtonsContainer }>
             <SocialLoginButton type="google" onPress={ () => null } />
-            <SocialLoginButton type="facebook" onPress={ () => null } />
-            <SocialLoginButton type="twitter" onPress={ () => null } />
           </View>
         </View>
       </KeyboardAvoidingView>

@@ -13,7 +13,7 @@ const FloatingHeader: React.FC = () => {
 
   return <View style={ [styles.container, { marginTop: top }] }>
     <TouchableOpacity style={ styles.buttonWrapper } onPress={ onNavigateBack }>
-      <ArrowLeftIcon fill="#FFF" />
+      <ArrowLeftIcon fill="yellow" />
     </TouchableOpacity>
   </View>;
 };
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   container: {
     position: "absolute",
     paddingHorizontal: 16,
-    zIndex: 5,
+    zIndex: 5
   },
   buttonWrapper: {
     width: 36,
@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: brandColors.blue,
     alignItems: "center",
-    justifyContent: "center",
-  },
+    justifyContent: "center"
+  }
 });
 
 export default FloatingHeader;

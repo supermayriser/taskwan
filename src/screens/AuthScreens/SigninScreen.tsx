@@ -1,29 +1,29 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { Text } from 'react-native-paper';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-// import { AccessToken, LoginManager } from "react-native-fbsdk-next";
-import SafeAreaWrapper from '../../components/common/SafeAreaWrapper';
-import TaskwanLogo from '../../components/common/TaskwanLogo';
-import IconInput from '../../components/common/IconInput';
-import MessageIcon from '../../../assets/svg/InputIcons/messageIcon.svg';
-import LockIcon from '../../../assets/svg/InputIcons/lockIcon.svg';
-import { brandColors } from '../../utils/colors';
-import BrandButton from '../../components/common/BrandButton';
-import SocialLoginButton from '../../components/common/SocialLoginButton';
-import { AuthStackNavigationList } from '../../navigation/AuthStack';
-import { AuthStackScreensList } from '../../navigation/screens';
-import { StoreContext } from '../../store/store';
-import env from '../../../env.json';
+import React, { useContext, useEffect, useState } from "react";
+import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Text } from "react-native-paper";
+import { Formik } from "formik";
+import * as Yup from "yup";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import auth from "@react-native-firebase/auth";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import SafeAreaWrapper from "../../components/common/SafeAreaWrapper";
+import TaskwanLogo from "../../components/common/TaskwanLogo";
+import IconInput from "../../components/common/IconInput";
+import MessageIcon from "../../../assets/svg/InputIcons/messageIcon.svg";
+import LockIcon from "../../../assets/svg/InputIcons/lockIcon.svg";
+import { brandColors } from "../../utils/colors";
+import BrandButton from "../../components/common/BrandButton";
+import SocialLoginButton from "../../components/common/SocialLoginButton";
+import { AuthStackNavigationList } from "../../navigation/AuthStack";
+import { AuthStackScreensList } from "../../navigation/screens";
+import { StoreContext } from "../../store/store";
+import env from "../../../env.json";
 
 const SigninSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Enter email'),
-  password: Yup.string().min(2, 'Password is too short').max(50, 'Password is too long').required('Enter password')
+  email: Yup.string().email("Invalid email").required("Enter email"),
+  password: Yup.string().min(2, "Password is too short").max(50, "Password is too long").required("Enter password")
 });
 
 interface IProps {
@@ -38,8 +38,8 @@ const SigninScreen: React.FC<IProps> = ({ navigation }) => {
   } = useContext(StoreContext);
 
   const checkForToken = async (): Promise<void> => {
-    const token = await AsyncStorage.getItem('welcome');
-    if (token && token !== 'visited') {
+    const token = await AsyncStorage.getItem("welcome");
+    if (token && token !== "visited") {
       navigation.navigate(AuthStackScreensList.WelcomeScreen);
     }
   };
@@ -61,7 +61,7 @@ const SigninScreen: React.FC<IProps> = ({ navigation }) => {
         setSnackbar({
           visible: true,
           color: brandColors.red,
-          text: 'Your email hasn\'t been verified yet'
+          text: "Your email hasn't been verified yet"
         });
         return setIsSignupLoading(false);
       }
@@ -76,7 +76,7 @@ const SigninScreen: React.FC<IProps> = ({ navigation }) => {
         setSnackbar({
           visible: true,
           color: brandColors.red,
-          text: 'Something went wrong, try again later'
+          text: "Something went wrong, try again later"
         });
       }
 
@@ -96,13 +96,13 @@ const SigninScreen: React.FC<IProps> = ({ navigation }) => {
       const googleCredential = auth.GoogleAuthProvider.credential(userInfo.idToken);
       await auth().signInWithCredential(googleCredential);
     } catch (error: any) {
-      if (error.code && error.code !== '-5') {
-        console.log('Error:', error);
+      if (error.code && error.code !== "-5") {
+        console.log("Error:", error);
 
         setSnackbar({
           visible: true,
           color: brandColors.red,
-          text: 'Something went wrong'
+          text: "Something went wrong"
         });
       }
     }
@@ -164,25 +164,25 @@ const SigninScreen: React.FC<IProps> = ({ navigation }) => {
       contentContainerStyle={ styles.contentContainer }
       showsVerticalScrollIndicator={ false }
     >
-      <KeyboardAvoidingView behavior={ Platform.OS === 'ios' ? 'padding' : 'height' }>
-        <TaskwanLogo/>
+      <KeyboardAvoidingView behavior={ Platform.OS === "ios" ? "padding" : "height" }>
+        <TaskwanLogo />
 
         <View style={ styles.loginContainer }>
           <Text style={ styles.headerText }>Login to your account</Text>
 
           <Formik
-            initialValues={ { email: '', password: '' } }
+            initialValues={ { email: "", password: "" } }
             onSubmit={ values => onLogin(values) }
             validationSchema={ SigninSchema }
           >
             { ({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
               <>
                 <IconInput
-                  icon={ <MessageIcon/> }
+                  icon={ <MessageIcon /> }
                   placeholder="Email"
                   value={ values.email }
-                  handleChange={ handleChange('email') }
-                  handleBlur={ handleBlur('email') }
+                  handleChange={ handleChange("email") }
+                  handleBlur={ handleBlur("email") }
                   errorMessage={ errors.email }
                   touched={ touched.email }
                   keyboardType="email-address"
@@ -190,11 +190,11 @@ const SigninScreen: React.FC<IProps> = ({ navigation }) => {
 
                 <IconInput
                   placeholder="Password"
-                  icon={ <LockIcon/> }
+                  icon={ <LockIcon /> }
                   marginBottom={ 2 }
                   value={ values.password }
-                  handleChange={ handleChange('password') }
-                  handleBlur={ handleBlur('password') }
+                  handleChange={ handleChange("password") }
+                  handleBlur={ handleBlur("password") }
                   errorMessage={ errors.password }
                   touched={ touched.password }
                   secure
@@ -204,7 +204,7 @@ const SigninScreen: React.FC<IProps> = ({ navigation }) => {
                   <Text style={ styles.passwordForgot }>Forgot password?</Text>
                 </TouchableOpacity>
 
-                <BrandButton loading={ isSignupLoading } onPress={ handleSubmit } text="Login"/>
+                <BrandButton loading={ isSignupLoading } onPress={ handleSubmit } text="Login" />
               </>
             ) }
           </Formik>
@@ -216,9 +216,7 @@ const SigninScreen: React.FC<IProps> = ({ navigation }) => {
           </Text>
 
           <View style={ styles.socialButtonsContainer }>
-            <SocialLoginButton type="google" onPress={ onGoogleSignin }/>
-            <SocialLoginButton type="facebook" onPress={ () => null }/>
-            <SocialLoginButton type="twitter" onPress={ () => null }/>
+            <SocialLoginButton type="google" onPress={ onGoogleSignin } />
           </View>
 
           <View style={ styles.signupContainer }>
@@ -236,21 +234,21 @@ const SigninScreen: React.FC<IProps> = ({ navigation }) => {
 const styles = StyleSheet.create({
   hintText: {
     fontSize: 12,
-    fontWeight: '400',
+    fontWeight: "400",
     lineHeight: 18
   },
   signupText: {
     color: brandColors.blue,
     fontSize: 12,
-    fontWeight: '400',
+    fontWeight: "400",
     lineHeight: 18
   },
   signupContainer: {
-    flexDirection: 'row'
+    flexDirection: "row"
   },
   socialButtonsContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginVertical: 20
   },
   blueDashText: {
@@ -258,22 +256,22 @@ const styles = StyleSheet.create({
   },
   socialLoginContainer: {
     marginTop: 35,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
+    justifyContent: "center"
   },
   forgetButtonWrapper: {
     marginBottom: 30
   },
   passwordForgot: {
     fontSize: 10,
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     color: brandColors.paleBlue,
     lineHeight: 15
   },
   headerText: {
     fontSize: 14,
-    fontWeight: '500',
-    textAlign: 'center',
+    fontWeight: "500",
+    textAlign: "center",
     marginBottom: 50,
     marginTop: 60
   },
