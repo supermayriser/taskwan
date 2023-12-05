@@ -23,6 +23,7 @@ DerivedData
 ios/.xcode.env.local
 yarn.lock
 ios/GoogleService-Info.plist
+env.json
 
 # Android/IntelliJ
 #
