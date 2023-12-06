@@ -5,6 +5,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import auth from "@react-native-firebase/auth";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 import SafeAreaWrapper from "../../components/common/SafeAreaWrapper";
 import TaskwanLogo from "../../components/common/TaskwanLogo";
@@ -20,6 +21,7 @@ import { StoreContext } from "../../store/store";
 import { AuthStackNavigationList } from "../../navigation/AuthStack";
 import { AuthStackScreensList } from "../../navigation/screens";
 import FloatingHeader from "../../components/common/FloatingHeader";
+import env from "../../../env.json";
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Enter email"),
@@ -72,6 +74,28 @@ const SignupScreen: React.FC<IProps> = ({ navigation }) => {
 
       setIsSignupLoading(false);
     });
+  };
+
+  const onGoogleSignin = async (): Promise<void> => {
+    const configure = { webClientId: env.webClientId };
+
+    try {
+      GoogleSignin.configure(configure);
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      const googleCredential = auth.GoogleAuthProvider.credential(userInfo.idToken);
+      await auth().signInWithCredential(googleCredential);
+    } catch (error: any) {
+      if (error.code && error.code !== "-5") {
+        console.log("Error:", error);
+
+        setSnackbar({
+          visible: true,
+          color: brandColors.red,
+          text: "Something went wrong"
+        });
+      }
+    }
   };
 
   return <SafeAreaWrapper>
@@ -149,7 +173,7 @@ const SignupScreen: React.FC<IProps> = ({ navigation }) => {
           </Text>
 
           <View style={ styles.socialButtonsContainer }>
-            <SocialLoginButton type="google" onPress={ () => null } />
+            <SocialLoginButton type="google" onPress={ onGoogleSignin } />
           </View>
         </View>
       </KeyboardAvoidingView>
