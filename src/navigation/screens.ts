@@ -20,5 +20,6 @@ export enum HomeStackScreens {
   Location = "Location",
   Settings = "Settings",
   NotificationsSettings = "NotificationsSettings",
-  Security = "Security"
+  Security = "Security",
+  CreateTask = "CreateTask"
 }

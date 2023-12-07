@@ -100,7 +100,7 @@ const DashboardScreen: React.FC<IProps> = ({ navigation }) => {
   };
 
   return <SafeAreaWrapper>
-    <FocusAwareStatusBar barStyle="light-content" />
+    <FocusAwareStatusBar barStyle="dark-content" />
 
     <ScrollView
       showsVerticalScrollIndicator={ false }

@@ -14,6 +14,7 @@ import LocationScreen from "../screens/AppScreens/LocationScreen";
 import SettingsScreen from "../screens/AppScreens/SettingsScreen";
 import NotificationsSettingsScreen from "../screens/AppScreens/NotificationsSettingsScreen";
 import SecurityScreen from "../screens/AppScreens/SecurityScreen";
+import CreateTaskScreen from "../screens/AppScreens/CreateTaskScreen";
 
 // General purpose screens
 export type AppStackParamList = {
@@ -24,7 +25,8 @@ export type AppStackParamList = {
   Location: undefined,
   Settings: undefined,
   NotificationsSettings: undefined,
-  Security: undefined
+  Security: undefined,
+  CreateTask: undefined
 }
 
 export type HomeTabsParamList = {
@@ -54,7 +56,7 @@ const AppStack: React.FC = () => {
   return <>
     <Stack.Navigator
       initialRouteName={ HomeStackScreens.HomeTabs }
-      screenOptions={ { header: () => null } }
+      screenOptions={ { header: () => null, fullScreenGestureEnabled: true } }
     >
       <Stack.Screen name={ HomeStackScreens.HomeTabs } component={ HomeTabs } />
 
@@ -65,6 +67,7 @@ const AppStack: React.FC = () => {
       <Stack.Screen name={ HomeStackScreens.Statistics } component={ StatisticsScreen } />
       <Stack.Screen name={ HomeStackScreens.Notifications } component={ NotificationsScreen } />
       <Stack.Screen name={ HomeStackScreens.ProfileEdit } component={ ProfileEditScreen } />
+      <Stack.Screen name={ HomeStackScreens.CreateTask } component={ CreateTaskScreen } />
     </Stack.Navigator>
   </>;
 };

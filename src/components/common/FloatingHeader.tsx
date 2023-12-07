@@ -11,9 +11,9 @@ const top = (Platform.OS === "ios") ? getStatusBarHeight(true) : 5;
 const FloatingHeader: React.FC = () => {
   const onNavigateBack = (): void => NavigationMethods.goBack();
 
-  return <View style={ [styles.container, { marginTop: top }] }>
+  return <View style={ [styles.container, { marginTop: top + 40 }] }>
     <TouchableOpacity style={ styles.buttonWrapper } onPress={ onNavigateBack }>
-      <ArrowLeftIcon fill="yellow" />
+      <ArrowLeftIcon fill="#FFF" />
     </TouchableOpacity>
   </View>;
 };

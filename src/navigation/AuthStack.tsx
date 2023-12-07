@@ -22,7 +22,7 @@ const AuthStack: React.FC = () => {
   return <>
     <Stack.Navigator
       initialRouteName={ AuthStackScreensList.SigninScreen }
-      screenOptions={ { header: () => null } }
+      screenOptions={ { header: () => null, fullScreenGestureEnabled: true } }
     >
       <Stack.Screen name={ AuthStackScreensList.WelcomeScreen } component={ WelcomeScreen } />
       <Stack.Screen name={ AuthStackScreensList.SigninScreen } component={ SigninScreen } />
