@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
-import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { Text } from "react-native-paper";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import firestore from "@react-native-firebase/firestore";
@@ -10,7 +9,6 @@ import { FirebaseStorageTypes } from "@react-native-firebase/storage";
 import SafeAreaWrapper from "../../components/common/SafeAreaWrapper";
 import FocusAwareStatusBar from "../../components/common/FocusAwareStatusBar";
 import { brandColors } from "../../utils/colors";
-import BackIcon from "../../../assets/svg/arrowLeft.svg";
 import { AppStackParamList } from "../../navigation/AppStack";
 import { HomeStackScreens } from "../../navigation/screens";
 import BrandButton from "../../components/common/BrandButton";
@@ -18,6 +16,7 @@ import { StoreContext } from "../../store/store";
 import ProfileEditForm from "../../components/ProfileEditScreen/ProfileEditForm";
 import { Collections } from "../../utils/enums";
 import Avatar from "../../components/ProfileEditScreen/Avatar";
+import HeaderBackButton from "../../components/common/HeaderBackButton";
 
 export type ProfileEditState = {
   displayName: null | string,
@@ -82,16 +81,7 @@ const ProfileEditScreen: React.FC<IProps> = ({ navigation }) => {
       showsVerticalScrollIndicator={ false }
       style={ styles.scrollViewContainer }
     >
-      <View style={ styles.headerContainer }>
-        <TouchableOpacity style={ styles.backButtonContainer } onPress={ goBack }>
-          <BackIcon fill={ brandColors.blue } />
-        </TouchableOpacity>
-
-        <Text style={ styles.headerText }>My Profile</Text>
-
-        {/* Transparent filler View */ }
-        <View style={ { width: 36, height: 36 } } />
-      </View>
+      <HeaderBackButton titleText="My Profile" />
 
       <View style={ styles.container }>
         <Formik
@@ -139,30 +129,9 @@ const styles = StyleSheet.create({
     paddingBottom: 50,
     minHeight: "90%"
   },
-  headerText: {
-    color: "#FFFFFF",
-    fontSize: 16,
-    fontWeight: "600"
-  },
-  backButtonContainer: {
-    borderRadius: 10,
-    backgroundColor: "#FFFFFF",
-    justifyContent: "center",
-    alignItems: "center",
-    width: 36,
-    height: 36
-  },
   scrollViewContainer: {
     flex: 1
   },
-  headerContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingHorizontal: 15,
-    marginTop: 10,
-    alignItems: "center",
-    marginBottom: 50
-  }
 });
 
 export default ProfileEditScreen;

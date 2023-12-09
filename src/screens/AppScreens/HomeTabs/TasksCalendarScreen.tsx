@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     backgroundColor: brandColors.blue,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 10,
+    borderRadius: 12.5,
     paddingHorizontal: 15,
     paddingVertical: 10,
     flexDirection: "row"
@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
   dateHeaderContainer: {
     paddingHorizontal: 15,
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    paddingTop: 10
   },
   currentDayText: {
     fontSize: 24,

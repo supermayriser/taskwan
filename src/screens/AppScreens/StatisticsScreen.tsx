@@ -9,14 +9,14 @@ import CaretForward from "../../../assets/svg/Statistics/catetForward.svg";
 import { brandColors } from "../../utils/colors";
 import FocusAwareStatusBar from "../../components/common/FocusAwareStatusBar";
 import SafeAreaWrapper from "../../components/common/SafeAreaWrapper";
-import BackIcon from "../../../assets/svg/arrowLeft.svg";
 import { AppStackParamList } from "../../navigation/AppStack";
 import { HomeStackScreens } from "../../navigation/screens";
+import HeaderBackButton from "../../components/common/HeaderBackButton";
 
 const { width } = Dimensions.get("window");
 
 interface IProps {
-  navigation: NativeStackNavigationProp<AppStackParamList, HomeStackScreens.Statistics>
+  navigation: NativeStackNavigationProp<AppStackParamList, HomeStackScreens.Statistics>;
 }
 
 const StatisticsScreen: React.FC<IProps> = ({ navigation }) => {
@@ -43,16 +43,7 @@ const StatisticsScreen: React.FC<IProps> = ({ navigation }) => {
       showsVerticalScrollIndicator={ false }
       style={ styles.scrollViewContainer }
     >
-      <View style={ styles.headerContainer }>
-        <TouchableOpacity style={ styles.backButtonContainer } onPress={ goBack }>
-          <BackIcon fill={ brandColors.blue } />
-        </TouchableOpacity>
-
-        <Text style={ styles.headerText }>Statistics</Text>
-
-        {/* Transparent filler View */ }
-        <View style={ { width: 36, height: 36 } } />
-      </View>
+      <HeaderBackButton titleText="Statistics" />
 
       <View style={ styles.container }>
         <View style={ styles.dateRangeContainer }>
@@ -140,34 +131,34 @@ const styles = StyleSheet.create({
     color: brandColors.darkGrey,
     fontSize: 10,
     fontWeight: "500",
-    lineHeight: 15,
+    lineHeight: 15
   },
   monthText: {
     color: brandColors.darkGrey,
     fontSize: 10,
     fontWeight: "500",
-    marginBottom: 10,
+    marginBottom: 10
   },
   dateStatisticsContainer: {
     alignItems: "center",
     width: "45%",
-    marginBottom: 30,
+    marginBottom: 30
   },
   datesStatisticsContainer: {
     flexDirection: "row",
     paddingHorizontal: 15,
     flexWrap: "wrap",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   tasksValue: {
     fontSize: 40,
-    fontWeight: "500",
+    fontWeight: "500"
   },
   subheaderText: {
     color: brandColors.darkGrey,
     fontSize: 10,
     fontWeight: "500",
-    marginBottom: 11,
+    marginBottom: 11
   },
   valueContainer: {
     alignItems: "center",
@@ -175,7 +166,7 @@ const styles = StyleSheet.create({
     shadowColor: brandColors.snowBlue,
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 2
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
@@ -183,60 +174,39 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     borderRadius: 10,
     width: width * .42,
-    paddingVertical: 10,
+    paddingVertical: 10
   },
   topStatisticsContainer: {
     flexDirection: "row",
     paddingHorizontal: 15,
     justifyContent: "space-between",
-    marginBottom: 30,
+    marginBottom: 30
   },
   caretButton: {
-    paddingHorizontal: 30,
+    paddingHorizontal: 30
   },
   currentYearText: {
     color: "#000000",
     fontSize: 14,
-    fontWeight: "400",
+    fontWeight: "400"
   },
   dateRangeContainer: {
     marginTop: 15,
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "center",
-    marginBottom: 47,
+    marginBottom: 47
   },
   container: {
     backgroundColor: "#FFFFFF",
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
     minHeight: "90%",
-    paddingBottom: 50,
-  },
-  headerText: {
-    color: "#FFFFFF",
-    fontSize: 16,
-    fontWeight: "600",
-  },
-  backButtonContainer: {
-    borderRadius: 10,
-    backgroundColor: "#FFFFFF",
-    justifyContent: "center",
-    alignItems: "center",
-    width: 36,
-    height: 36,
-  },
-  headerContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingHorizontal: 15,
-    marginTop: 10,
-    alignItems: "center",
-    marginBottom: 50,
+    paddingBottom: 50
   },
   scrollViewContainer: {
-    flex: 1,
-  },
+    flex: 1
+  }
 });
 
 export default StatisticsScreen;
