@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 import SafeAreaWrapper from "../../components/common/SafeAreaWrapper";
 import FocusAwareStatusBar from "../../components/common/FocusAwareStatusBar";
@@ -16,6 +16,10 @@ const CreateTaskScreen: React.FC = () => {
     >
       <HeaderBackButton titleText="Add Task" />
 
+      <View>
+        <Text>1</Text>
+        <Text>2</Text>
+      </View>
     </ScrollView>
   </SafeAreaWrapper>;
 };
