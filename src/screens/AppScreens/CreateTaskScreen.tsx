@@ -16,7 +16,7 @@ const CreateTaskScreen: React.FC = () => {
     >
       <HeaderBackButton titleText="Add Task" />
 
-      <View>
+      <View style={styles.buttonsContainer}>
         <Text>1</Text>
         <Text>2</Text>
       </View>
@@ -25,6 +25,9 @@ const CreateTaskScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
+  buttonsContainer: {
+
+  },
   scrollViewContainer: {
     flex: 1
   },
