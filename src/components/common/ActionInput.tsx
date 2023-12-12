@@ -24,20 +24,20 @@ const ActionInput: React.FC<IProps> = ({ icon, value, onPress, label }) => {
 
 const styles = StyleSheet.create({
   iconWrapper: {
-    marginLeft: 10,
+    marginLeft: 10
   },
   labelText: {
     color: brandColors.blue,
     fontSize: 14,
     fontWeight: "500",
-    marginBottom: 10,
+    marginBottom: 10
   },
   valueText: {
     color: brandColors.darkGrey,
     lineHeight: 18,
     fontSize: 12,
     fontWeight: "400",
-    marginLeft: 10,
+    marginLeft: 10
   },
   container: {
     height: 48,
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
     borderColor: "rgba(0, 110, 233, 0.1)",
     overflow: "hidden",
     flexDirection: "row",
-    alignItems: "center",
-  },
+    alignItems: "center"
+  }
 });
 
 export default ActionInput;

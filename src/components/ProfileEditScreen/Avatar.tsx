@@ -109,8 +109,6 @@ const Avatar: React.FC = () => {
     }
   };
 
-  console.log("values", values);
-
   return <TouchableOpacity style={ styles.imageWrapper } onPress={ onImageEdit }>
     { loading ? <View style={ styles.loadingBackground }>
       <ActivityIndicator animating={ true } color={ brandColors.blue } />
