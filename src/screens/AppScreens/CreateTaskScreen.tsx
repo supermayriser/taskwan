@@ -9,6 +9,7 @@ import HeaderBackButton from "../../components/common/HeaderBackButton";
 import dayjs from "dayjs";
 import CalendarIcon from "../../../assets/svg/smallCalendarIcon.svg";
 import ActionInput from "../../components/common/ActionInput";
+import RegularInput from "../../components/common/RegularInput";
 
 const CreateTaskScreen: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -52,6 +53,30 @@ const CreateTaskScreen: React.FC = () => {
             />
           </View>
         </View>
+
+        <RegularInput
+          value={ "" }
+          handleChange={ () => {
+          } }
+          handleBlur={ () => {
+          } }
+          label="Title"
+          touched={ false }
+          errorMessage={ "error" }
+          placeholder="Add title"
+        />
+
+        <RegularInput
+          value={ "" }
+          handleChange={ () => {
+          } }
+          handleBlur={ () => {
+          } }
+          label="Description"
+          touched={ false }
+          errorMessage={ "error" }
+          placeholder="Add description"
+        />
 
         <DatePickerModal
           locale="en"
