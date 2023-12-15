@@ -24,6 +24,10 @@ const CreateTaskScreen: React.FC = () => {
     // setFieldValue("birthDate", date);
   };
 
+  const onTaskCreate = (): void => {
+
+  }
+
   return <SafeAreaWrapper forcedColor={ brandColors.blue }>
     <FocusAwareStatusBar barStyle="dark-content" />
 
