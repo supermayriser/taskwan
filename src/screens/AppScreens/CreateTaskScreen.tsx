@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import { DatePickerModal } from "react-native-paper-dates";
 
 import SafeAreaWrapper from "../../components/common/SafeAreaWrapper";
@@ -10,9 +10,11 @@ import dayjs from "dayjs";
 import CalendarIcon from "../../../assets/svg/smallCalendarIcon.svg";
 import ActionInput from "../../components/common/ActionInput";
 import RegularInput from "../../components/common/RegularInput";
+import { Text } from "react-native-paper";
 
 const CreateTaskScreen: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<"priority" | "daily">("priority");
 
   const onDismissSingle = (): void => setOpen(false);
 
@@ -26,7 +28,7 @@ const CreateTaskScreen: React.FC = () => {
 
   const onTaskCreate = (): void => {
 
-  }
+  };
 
   return <SafeAreaWrapper forcedColor={ brandColors.blue }>
     <FocusAwareStatusBar barStyle="dark-content" />
@@ -70,6 +72,20 @@ const CreateTaskScreen: React.FC = () => {
           placeholder="Add title"
         />
 
+        <View style={ styles.selectCategoryContainer }>
+          <Text style={ styles.labelText }>Category</Text>
+
+          <View style={ styles.selectCategoryButtonsContainer }>
+            <TouchableOpacity style={ styles.selectCategoryButton }>
+              <Text style={ styles.categoryText }>Priority Task</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={ styles.selectCategoryButton }>
+              <Text style={ styles.categoryText }>Daily Task</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
         <RegularInput
           value={ "" }
           handleChange={ () => {
@@ -96,6 +112,33 @@ const CreateTaskScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
+  categoryText: {
+    fontFamily: "Poppins-Regular",
+    color: brandColors.blue
+  },
+  selectCategoryButton: {
+    height: 48,
+    width: "48%",
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "rgba(0, 110, 233, 0.1)",
+    overflow: "hidden",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  selectCategoryButtonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  labelText: {
+    color: brandColors.blue,
+    fontSize: 14,
+    fontWeight: "500",
+    marginBottom: 10
+  },
+  selectCategoryContainer: {
+    marginBottom: 20
+  },
   datesContainer: {
     flexDirection: "row",
     justifyContent: "space-between"
