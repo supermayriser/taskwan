@@ -76,11 +76,11 @@ const CreateTaskScreen: React.FC = () => {
           <Text style={ styles.labelText }>Category</Text>
 
           <View style={ styles.selectCategoryButtonsContainer }>
-            <TouchableOpacity style={ styles.selectCategoryButton }>
+            <TouchableOpacity style={ [styles.selectCategoryButton, activeCategory === "priority" ? null : null] }>
               <Text style={ styles.categoryText }>Priority Task</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={ styles.selectCategoryButton }>
+            <TouchableOpacity style={ [styles.selectCategoryButton, activeCategory === "daily" ? null : null] }>
               <Text style={ styles.categoryText }>Daily Task</Text>
             </TouchableOpacity>
           </View>
