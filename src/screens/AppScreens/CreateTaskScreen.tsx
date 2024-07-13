@@ -11,6 +11,7 @@ import CalendarIcon from "../../../assets/svg/smallCalendarIcon.svg";
 import ActionInput from "../../components/common/ActionInput";
 import RegularInput from "../../components/common/RegularInput";
 import { Text } from "react-native-paper";
+import BrandButton from "../../components/common/BrandButton";
 
 const CreateTaskScreen: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -31,7 +32,7 @@ const CreateTaskScreen: React.FC = () => {
   };
 
   return <SafeAreaWrapper forcedColor={ brandColors.blue }>
-    <FocusAwareStatusBar barStyle="dark-content" />
+    <FocusAwareStatusBar barStyle="light-content" backgroundColor={ brandColors.blue } />
 
     <ScrollView
       showsVerticalScrollIndicator={ false }
@@ -87,7 +88,7 @@ const CreateTaskScreen: React.FC = () => {
         </View>
 
         <RegularInput
-          value={ "" }
+          value={ "qklefmkqwejn qwjefk wjqe wjnfkqwjn efkwjne fwkjen fwkjefnwkjefnwkejfnwkjenfkwjenf" }
           handleChange={ () => {
           } }
           handleBlur={ () => {
@@ -96,7 +97,10 @@ const CreateTaskScreen: React.FC = () => {
           touched={ false }
           errorMessage={ "error" }
           placeholder="Add description"
+          multiline
         />
+
+        <BrandButton onPress={ () => null } text="Create Task" />
 
         <DatePickerModal
           locale="en"
@@ -147,10 +151,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
-    paddingBottom: 50,
-    minHeight: "90%",
+    paddingBottom: 25,
     paddingTop: 32,
-    paddingHorizontal: 15
+    paddingHorizontal: 15,
+    minHeight: 600
   },
   scrollViewContainer: {
     flex: 1

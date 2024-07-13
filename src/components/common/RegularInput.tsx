@@ -17,6 +17,7 @@ interface IProps {
   disabled?: boolean,
   marginBottom?: number,
   label: string
+  multiline?: boolean
 }
 
 const RegularInput: React.FC<IProps> = ({
@@ -29,6 +30,7 @@ const RegularInput: React.FC<IProps> = ({
   touched,
   errorMessage,
   disabled,
+  multiline
 }) => {
   return <View style={ { marginBottom: 20 } }>
     <Text style={ styles.labelText }>{ label }</Text>
@@ -44,6 +46,7 @@ const RegularInput: React.FC<IProps> = ({
         secureTextEntry={ secure }
         keyboardType={ keyboardType }
         editable={ !disabled }
+        multiline={ multiline }
       />
     </View>
 
@@ -57,33 +60,33 @@ const RegularInput: React.FC<IProps> = ({
 
 const styles = StyleSheet.create({
   errorText: {
-    color: brandColors.red,
+    color: brandColors.red
   },
   labelText: {
     color: brandColors.blue,
     fontSize: 14,
     fontWeight: "500",
-    marginBottom: 10,
+    marginBottom: 10
   },
   container: {
-    height: 48,
+    minHeight: 48,
     width: "100%",
     borderWidth: 1,
     borderRadius: 10,
     borderColor: "rgba(0, 110, 233, 0.1)",
     overflow: "hidden",
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "center"
   },
   textInputStyle: {
-    height: 40,
+    minHeight: 40,
     marginLeft: 10,
     fontFamily: "Poppins-Regular",
     width: "100%",
     fontSize: 12,
     fontWeight: "400",
-    lineHeight: 18,
-  },
+    lineHeight: 18
+  }
 });
 
 export default RegularInput;
